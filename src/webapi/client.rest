@@ -1,0 +1,8 @@
+DELETE https://localhost:5001/weatherforecast HTTP/1.1
+
+###
+
+POST https://localhost:5001/weatherforecast HTTP/1.1
+
+###
+
