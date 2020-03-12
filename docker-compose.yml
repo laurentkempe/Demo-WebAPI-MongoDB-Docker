@@ -1,4 +1,4 @@
-version: '3.4'
+version: "3.4"
 
 services:
   webapi:
@@ -7,4 +7,11 @@ services:
       context: .
       dockerfile: src/webapi/Dockerfile
     ports:
-      - 80
+      - 80:80
+    depends_on:
+      - mongodb
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
