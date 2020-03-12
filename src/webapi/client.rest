@@ -1,4 +1,5 @@
-DELETE https://localhost:5001/weatherforecast HTTP/1.1
+
+GET https://localhost:5001/weatherforecast HTTP/1.1
 
 ###
 
@@ -6,6 +7,17 @@ POST https://localhost:5001/weatherforecast HTTP/1.1
 
 ###
 
-GET https://localhost:5001/weatherforecast HTTP/1.1
+DELETE https://localhost:5001/weatherforecast HTTP/1.1
 
 ###
+# DOCKER
+
+GET http://localhost/weatherforecast HTTP/1.1
+
+###
+
+POST http://localhost/weatherforecast HTTP/1.1
+
+###
+
+DELETE http://localhost/weatherforecast HTTP/1.1
