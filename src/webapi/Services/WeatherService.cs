@@ -19,5 +19,23 @@ namespace webapi.Services
         public List<WeatherForecast> Get() =>
                 _weatherForecasts.Find(weatherForecast => true).ToList();
 
+        public WeatherForecast Create(WeatherForecast weatherForecast)
+        {
+            _weatherForecasts.InsertOne(weatherForecast);
+
+            return weatherForecast;
+        }
+
+        public IEnumerable<WeatherForecast> Create(IEnumerable<WeatherForecast> weatherForecasts)
+        {
+            _weatherForecasts.InsertMany(weatherForecasts);
+
+            return weatherForecasts;
+        }
+
+        public void Clean()
+        {
+            _weatherForecasts.DeleteMany(weatherForecast => true);
+        }
     }
 }

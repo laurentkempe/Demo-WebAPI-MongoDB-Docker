@@ -29,14 +29,34 @@ namespace webapi.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            List<WeatherForecast> list = _weatherService.Get();
+
+            return list;
+        }
+
+        [HttpPost]
+        public ActionResult<IEnumerable<WeatherForecast>> Create()
+        {
             var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            var weatherForecasts = Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
                 TemperatureC = rng.Next(-20, 55),
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+
+            _weatherService.Create(weatherForecasts);
+
+            return Ok();
+        }
+
+        [HttpDelete]
+        public ActionResult Clean()
+        {
+            _weatherService.Clean();
+
+            return Ok();
         }
     }
 }
