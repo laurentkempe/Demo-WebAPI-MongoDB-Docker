@@ -1,0 +1,23 @@
+name: Build Docker Image CI
+on: 
+  pull_request:
+    branches:
+    - master
+  push:
+    branches:
+    - master
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-16.04
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Build the Docker container image
+      run: docker build -t docker.pkg.github.com/laurentkempe/Demo-WebAPI-MongoDB-Docker/Demo-WebAPI-MongoDB-Docker:latest .
+
+#    - name: Push the image to Github Packages Repository
+#      run: |
+#        docker login docker.pkg.github.com -u publisher -p "${{ secrets.GITHUB_PACKAGE_REGISTRY_TOKEN }}"
+#        docker push docker.pkg.github.com/laurentkempe/dockerwebapi/dockerwebapi:latest
