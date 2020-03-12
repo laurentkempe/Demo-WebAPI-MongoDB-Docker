@@ -1,4 +1,4 @@
-# Demo Web api, MongoDB, Docker
+# Demo Web API, MongoDB, Docker
 
 Simple Web API demo project for the "Docker Introduction" presentation.
 
