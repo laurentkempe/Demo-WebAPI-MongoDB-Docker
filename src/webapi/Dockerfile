@@ -1,11 +1,11 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["./src/webapi/webapi.csproj", "src/webapi/"]
-RUN dotnet restore "./src/webapi/webapi.csproj"
+COPY ["src/webapi/webapi.csproj", "src/webapi/"]
+RUN dotnet restore "src/webapi/webapi.csproj"
 COPY . .
 WORKDIR "/src/src/webapi"
 RUN dotnet build "webapi.csproj" -c Release -o /app/build
