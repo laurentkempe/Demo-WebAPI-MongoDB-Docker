@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using webapi.Services;
 
 namespace webapi
 {
@@ -25,6 +27,14 @@ namespace webapi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<WeatherDatabaseSettings>(
+                Configuration.GetSection(nameof(WeatherDatabaseSettings)));
+
+            services.AddSingleton<IWeatherDatabaseSettings>(sp =>
+                sp.GetRequiredService<IOptions<WeatherDatabaseSettings>>().Value);
+
+            services.AddSingleton<IWeatherService, WeatherService>();
+
             services.AddControllers();
         }
 
