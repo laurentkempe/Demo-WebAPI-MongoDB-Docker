@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@master
 
     - name: Build the Docker container image
-      run: docker build -t docker.pkg.github.com/laurentkempe/demo-webapi-mongodb-docker/demo-webapi-mongodb-docker:latest .
+      run: docker build -t docker.pkg.github.com/laurentkempe/demo-webapi-mongodb-docker/demo-webapi-mongodb-docker/src/Dockerfile:latest .
 
 #    - name: Push the image to Github Packages Repository
 #      run: |
